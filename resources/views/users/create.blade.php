@@ -4,7 +4,7 @@
 @section('content')
     <div class="col-7">
         <div class="card">
-            <div class="card-header bg-dark text-success text-center">
+            <div class="card-header bg-info text-light text-center">
                 <h5>注册</h5>
             </div>
             <div class="card-body">
@@ -32,7 +32,7 @@
                                value="{{ old('password_confirmation') }}">
                     </div>
 
-                    <button type="submit" class="btn btn-primary">注册</button>
+                    <button type="submit" class="btn btn-primary btn-block">注册</button>
                 </form>
             </div>
         </div>
