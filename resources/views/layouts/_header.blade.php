@@ -1,13 +1,14 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top bg-dark">
     <div class="container">
-        <div class="col-md-offset-1 col-md-10">
-            <a href="{{ route('home') }}" id="logo">Sample App</a>
-            <nav class="float-right">
-                <ul class="nav nav-pills">
-                    <li class="nav-link"><a href="{{ route('help') }}">帮助</a></li>
-                    <li class="nav-link"><a href="#">登录</a></li>
-                </ul>
-            </nav>
-        </div>
+
+        <a href="{{ route('home') }}" id="logo" class="navbar-brand">Sample App</a>
+
+        <nav class="">
+            <ul class="nav justify-content-end nav-pills">
+                <li class="nav-item"><a class="nav-link" href="{{ route('help') }}">帮助</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">登录</a></li>
+            </ul>
+        </nav>
+
     </div>
 </header>
