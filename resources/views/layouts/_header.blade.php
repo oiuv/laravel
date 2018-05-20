@@ -6,14 +6,14 @@
         <nav>
             <ul class="nav justify-content-end nav-pills">
                 @if (Auth::check())
-                    <li class="nav-item"><a class="nav-link" href="#">用户列表</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('users.index') }}">用户列表</a></li>
                     <li class="dropdown nav-item">
                         <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                             {{ Auth::user()->name }} <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="nav-item"><a class="nav-link" href="{{ route('users.show', Auth::user()->id) }}">个人中心</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">编辑资料</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('users.edit', Auth::user()->id) }}">编辑资料</a></li>
                             <li class="divider"></li>
                             <li class="nav-item">
                                 <a class="nav-link" id="logout" href="#">

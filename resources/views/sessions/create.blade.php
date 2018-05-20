@@ -2,7 +2,7 @@
 @section('title', '登录')
 
 @section('content')
-    <div class="col-8 my-1">
+    <div class="col-sm-12 col-md-8 my-1">
         <div class="card">
             <div class="card-header">
                 <h5>登录</h5>

@@ -2,7 +2,7 @@
 @section('title', $user->name)
 @section('content')
 
-    <div class="col-md-12">
+    <div class="col-12">
 
         <section class="user_info">
             @include('shared._user_info', ['user' => $user])
