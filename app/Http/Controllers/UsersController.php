@@ -103,8 +103,12 @@ class UsersController extends Controller
             return abort(403, '对不起，你无权进行此操作！');
         }
 
-        $user->delete();
-        session()->flash('success', '成功删除用户！');
+        try {
+            $user->delete();
+        } catch (\Exception $exception) {
+            return abort(403, '删除失败～');
+        }
+        session()->flash('success', '成功删除用户^_^');
         return back();
     }
 
