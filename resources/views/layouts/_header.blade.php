@@ -1,7 +1,7 @@
 <header class="navbar navbar-fixed-top bg-dark">
     <div class="container">
 
-        <a href="{{ route('home') }}" id="logo" class="navbar-brand">Sample App</a>
+        <a href="{{ route('home') }}" id="logo" class="navbar-brand">{{ config('app.name') }}</a>
 
         <nav>
             <ul class="nav justify-content-end nav-pills">
