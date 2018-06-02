@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Status;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,6 +13,7 @@ class StatusesController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +37,7 @@ class StatusesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -53,7 +55,7 @@ class StatusesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Status  $status
+     * @param  \App\Models\Status $status
      * @return \Illuminate\Http\Response
      */
     public function show(Status $status)
@@ -64,7 +66,7 @@ class StatusesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Status  $status
+     * @param  \App\Models\Status $status
      * @return \Illuminate\Http\Response
      */
     public function edit(Status $status)
@@ -75,8 +77,8 @@ class StatusesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Status  $status
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Models\Status $status
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Status $status)
@@ -87,13 +89,23 @@ class StatusesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Status  $status
+     * @param  \App\Models\Status $status
      * @return \Illuminate\Http\Response
      */
     public function destroy(Status $status)
     {
-        $this->authorize('destroy', $status);
-        $status->delete();
+        try {
+            $this->authorize('destroy', $status);
+        } catch (AuthorizationException $authorizationException) {
+            return abort(403, '对不起，你无权进行此操作！');
+        }
+
+        try {
+            $status->delete();
+        } catch (\Exception $exception) {
+            return abort(403, '删除失败～');
+        }
+
         session()->flash('success', '微博已被成功删除！');
         return redirect()->back();
     }
