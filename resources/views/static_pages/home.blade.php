@@ -12,6 +12,9 @@
                 <section class="user_info">
                     @include('shared._user_info', ['user' => Auth::user()])
                 </section>
+                <section class="stats">
+                    @include('shared._stats', ['user' => Auth::user()])
+                </section>
             </aside>
     @else
     <div class="col-12">
